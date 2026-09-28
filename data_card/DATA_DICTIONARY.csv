@@ -1,0 +1,18 @@
+column,source_file,dtype,shape,unit_of_analysis,description,role_in_estimand
+action,parquet,float32,"(6,)",frame,"Commanded joint targets: shoulder_pan.pos, shoulder_lift.pos, elbow_flex.pos, wrist_flex.pos, wrist_roll.pos, gripper.pos (degrees / gripper units).",target / label (y)
+observation.state,parquet,float32,"(6,)",frame,"Measured/actual joint positions, same 6 channels as action.",feature (X)
+observation.images.up,video (mp4),video,"(480,640,3)",frame,"Top/overhead camera view. Stored outside parquet; not decoded in this audit.",not used (out of scope)
+observation.images.side,video (mp4),video,"(480,640,3)",frame,"Side camera view. Stored outside parquet; not decoded in this audit.",not used (out of scope)
+timestamp,parquet,float32,(1,),frame,Seconds since episode start (expected step ~1/30 s at fps=30).,anomaly check (§10)
+frame_index,parquet,int64,(1,),frame,0-based frame index within its episode.,join key / ordering
+episode_index,parquet,int64,(1,),frame,0-based episode id (0-49); the grouping/unit-2 variable.,leakage-safe split key (§11)
+index,parquet,int64,(1,),frame,0-based global row index across the whole dataset (0-11938).,row identifier
+task_index,parquet,int64,(1,),frame,"Index into meta/tasks.jsonl; always 0 in this dataset (single task).",constant / not predictive
+episode_index (meta),meta/episodes.jsonl,int64,scalar,episode,Episode id as declared in the metadata sidecar file.,cross-check against parquet (§10)
+length,meta/episodes.jsonl,int64,scalar,episode,Declared number of frames in this episode.,cross-check against parquet row count (§10)
+tasks,meta/episodes.jsonl,list[str],scalar,episode,Natural-language task description for this episode.,provenance / label text
+robot_type,meta/info.json,str,scalar,dataset,"Declared robot identity, ""so100_follower"" -- note this differs from the repo name ""so101"".",schema/documentation consistency flag
+fps,meta/info.json,int,scalar,dataset,Declared recording frame rate (30).,anomaly check tolerance basis (§10)
+total_episodes,meta/info.json,int,scalar,dataset,Declared episode count (50).,acquisition sanity check (§4)
+total_frames,meta/info.json,int,scalar,dataset,Declared frame count (11939).,acquisition sanity check (§4)
+codebase_version,meta/info.json,str,scalar,dataset,LeRobot dataset format version (v2.1).,provenance / lineage record

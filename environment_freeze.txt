@@ -1,0 +1,191 @@
+absl-py @ file:///home/conda/feedstock_root/build_artifacts/absl-py_1751547525079/work
+altgraph==0.17.5
+annotated-types==0.7.0
+anyio==4.10.0
+appnope==0.1.4
+argon2-cffi==25.1.0
+argon2-cffi-bindings==25.1.0
+arrow==1.3.0
+asttokens==3.0.0
+astunparse==1.6.3
+async-lru==2.0.5
+attrs==25.3.0
+audioread==3.0.1
+babel==2.17.0
+beautifulsoup4==4.13.5
+bleach==6.2.0
+cached-property @ file:///home/conda/feedstock_root/build_artifacts/cached_property_1615209429212/work
+certifi==2025.8.3
+cffi==1.17.1
+charset-normalizer==3.4.2
+clarabel @ file:///Users/runner/miniforge3/conda-bld/clarabel_1765963778187/work
+click==8.5.0
+comm==0.2.3
+contourpy @ file:///Users/runner/miniforge3/conda-bld/contourpy_1744743163818/work
+cvxpy @ file:///Users/runner/miniforge3/conda-bld/bld/rattler-build_cvxpy-base_1765974701/work
+cycler @ file:///home/conda/feedstock_root/build_artifacts/cycler_1733332471406/work
+debugpy==1.8.16
+decorator==5.2.1
+defusedxml==0.7.1
+distro==1.9.0
+et_xmlfile @ file:///home/conda/feedstock_root/build_artifacts/et_xmlfile_1733749653422/work
+exceptiongroup==1.3.0
+executing==2.2.0
+fastjsonschema==2.21.2
+filelock==3.18.0
+flatbuffers==25.2.10
+fonttools @ file:///Users/runner/miniforge3/conda-bld/fonttools_1752722714520/work
+fqdn==1.5.1
+fsspec==2025.7.0
+gast==0.6.0
+google-pasta==0.2.0
+grpcio==1.74.0
+h11==0.16.0
+h5py @ file:///Users/runner/miniforge3/conda-bld/h5py_1749299240681/work
+hf-xet==1.6.0
+httpcore==1.0.9
+httpcore2==2.13.1
+httpx==0.28.1
+httpx2==2.13.1
+huggingface_hub==2.0.0
+idna==3.20
+iniconfig==2.1.0
+ipykernel==6.30.1
+ipython==8.37.0
+ipywidgets==8.1.7
+isoduration==20.11.0
+jedi==0.19.2
+Jinja2 @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_jinja2_1764517220/work
+jiter==0.10.0
+joblib==1.5.1
+json5==0.12.1
+jsonpointer==3.0.0
+jsonschema==4.25.1
+jsonschema-specifications==2025.4.1
+jupyter==1.1.1
+jupyter-console==6.6.3
+jupyter-events==0.12.0
+jupyter-lsp==2.2.6
+jupyter_client==8.6.3
+jupyter_core==5.8.1
+jupyter_server==2.17.0
+jupyter_server_terminals==0.5.3
+jupyterlab==4.4.6
+jupyterlab_pygments==0.3.0
+jupyterlab_server==2.27.3
+jupyterlab_widgets==3.0.15
+keras @ file:///home/conda/feedstock_root/build_artifacts/keras_1747722781675/work
+kiwisolver @ file:///Users/runner/miniforge3/conda-bld/kiwisolver_1751493987987/work
+lark==1.2.2
+lazy_loader==0.4
+libclang==18.1.1
+librosa==0.11.0
+llvmlite==0.44.0
+macholib==1.16.4
+Markdown==3.8.2
+markdown-it-py @ file:///home/conda/feedstock_root/build_artifacts/markdown-it-py_1733250460757/work
+MarkupSafe==3.0.2
+matplotlib==3.10.5
+matplotlib-inline==0.1.7
+mdurl @ file:///home/conda/feedstock_root/build_artifacts/mdurl_1733255585584/work
+mistune==3.1.3
+ml-dtypes @ file:///Users/runner/miniforge3/conda-bld/ml_dtypes_1736538879550/work
+mpmath==1.3.0
+msgpack==1.1.1
+munkres==1.1.4
+namex @ file:///home/conda/feedstock_root/build_artifacts/namex_1748346368839/work
+nbclient==0.10.2
+nbconvert==7.16.6
+nbformat==5.10.4
+nest-asyncio==1.6.0
+networkx==3.4.2
+notebook==7.4.5
+notebook_shim==0.2.4
+numba==0.61.2
+numpy==2.1.3
+openai==1.106.1
+openpyxl @ file:///Users/runner/miniforge3/conda-bld/openpyxl_1769122077153/work
+opt_einsum==3.4.0
+optree @ file:///Users/runner/miniforge3/conda-bld/optree_1753455081225/work
+osqp @ file:///Users/runner/miniforge3/conda-bld/bld/rattler-build_osqp_1771233646/work
+overrides==7.7.0
+packaging @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_packaging_1745345660/work
+pandas @ file:///Users/runner/miniforge3/conda-bld/pandas_1752081781120/work
+pandocfilters==1.5.1
+parso==0.8.5
+pexpect==4.9.0
+pillow @ file:///Users/runner/miniforge3/conda-bld/pillow_1751482042721/work
+platformdirs==4.3.8
+pluggy==1.6.0
+pooch==1.8.2
+prometheus_client==0.22.1
+prompt_toolkit==3.0.51
+protobuf==5.29.5
+psutil==7.0.0
+ptyprocess==0.7.0
+pure_eval==0.2.3
+pyarrow==25.0.1
+pycparser @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_pycparser_1733195786/work
+pydantic==2.11.7
+pydantic_core==2.33.2
+pygame==2.6.1
+Pygments @ file:///home/conda/feedstock_root/build_artifacts/pygments_1750615794071/work
+pyinstaller==6.21.0
+pyinstaller-hooks-contrib==2026.6
+pyparsing @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_pyparsing_1753873557/work
+pytest==8.4.2
+python-dateutil @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_python-dateutil_1751104122/work
+python-json-logger==3.3.0
+pytz @ file:///home/conda/feedstock_root/build_artifacts/pytz_1742920838005/work
+PyYAML==6.0.2
+pyzmq==27.0.2
+qdldl @ file:///Users/runner/miniforge3/conda-bld/bld/rattler-build_qdldl-python_1757139041/work
+referencing==0.36.2
+requests==2.32.4
+rfc3339-validator==0.1.4
+rfc3986-validator==0.1.1
+rfc3987-syntax==1.1.0
+rich @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_rich_1753436991/work/dist
+rpds-py==0.27.0
+scikit-learn==1.7.1
+scipy @ file:///Users/runner/miniforge3/conda-bld/scipy-split_1739790705989/work/dist/scipy-1.15.2-cp310-cp310-macosx_11_0_arm64.whl#sha256=7edcf528c303a2d0aa5afa5be176589f18a84d21a8d85f1972553ab95cab0933
+scs @ file:///Users/runner/miniforge3/conda-bld/bld/rattler-build_scs_1768081020/work
+seaborn==0.13.2
+Send2Trash==1.8.3
+six @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_six_1753199211/work
+sniffio==1.3.1
+soundfile==0.13.1
+soupsieve==2.7
+soxr==0.5.0.post1
+stack-data==0.6.3
+sympy==1.14.0
+tensorboard==2.19.0
+tensorboard-data-server==0.7.2
+tensorflow==2.19.0
+tensorflow-io-gcs-filesystem==0.37.1
+termcolor==3.1.0
+terminado==0.18.1
+threadpoolctl==3.6.0
+tinycss2==1.4.0
+tomli==2.2.1
+torch==2.8.0
+torchaudio==2.8.0
+torchvision==0.23.0
+tornado @ file:///Users/runner/miniforge3/conda-bld/tornado_1748003356919/work
+tqdm==4.67.1
+traitlets==5.14.3
+truststore==0.10.4
+types-python-dateutil==2.9.0.20250822
+typing-inspection==0.4.1
+typing_extensions @ file:///home/conda/feedstock_root/build_artifacts/bld/rattler-build_typing_extensions_1751643513/work
+tzdata @ file:///home/conda/feedstock_root/build_artifacts/python-tzdata_1742745135198/work
+unicodedata2 @ file:///Users/runner/miniforge3/conda-bld/unicodedata2_1736692581912/work
+uri-template==1.3.0
+urllib3==2.5.0
+wcwidth==0.2.13
+webcolors==24.11.1
+webencodings==0.5.1
+websocket-client==1.8.0
+Werkzeug==3.1.3
+widgetsnbextension==4.0.14
+wrapt==1.17.2

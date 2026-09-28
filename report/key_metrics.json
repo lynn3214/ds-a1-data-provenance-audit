@@ -1,0 +1,53 @@
+{
+  "dup_rate_overall": 0.141302,
+  "dup_by_episode_describe": {
+    "count": 50.0,
+    "mean": 0.140174,
+    "std": 0.047673,
+    "min": 0.059113,
+    "25%": 0.112323,
+    "50%": 0.130435,
+    "75%": 0.153662,
+    "max": 0.323432
+  },
+  "leading_dup_run_median": 3.0,
+  "leading_dup_run_mean": 7.18,
+  "episodes_with_leading_run": 37,
+  "length_match_count": 50,
+  "timestamp_anomaly_episodes": 0,
+  "leakage_report": [
+    {
+      "k": 1,
+      "frame_level_MSE_mean": 5.353241,
+      "frame_level_MSE_std": 0.223655,
+      "episode_level_MSE_mean": 18.529543,
+      "episode_level_MSE_std": 2.507665,
+      "leakage_gap (episode - frame)": 13.176302
+    },
+    {
+      "k": 3,
+      "frame_level_MSE_mean": 4.421131,
+      "frame_level_MSE_std": 0.138875,
+      "episode_level_MSE_mean": 14.982736,
+      "episode_level_MSE_std": 2.38542,
+      "leakage_gap (episode - frame)": 10.561605
+    },
+    {
+      "k": 5,
+      "frame_level_MSE_mean": 5.268494,
+      "frame_level_MSE_std": 0.187832,
+      "episode_level_MSE_mean": 13.661621,
+      "episode_level_MSE_std": 2.415241,
+      "leakage_gap (episode - frame)": 8.393126
+    }
+  ],
+  "naive_mse": 1.880968,
+  "start_state_std": [
+    4.025702,
+    0.267462,
+    0.136178,
+    0.977449,
+    4.411151,
+    0.553365
+  ]
+}
