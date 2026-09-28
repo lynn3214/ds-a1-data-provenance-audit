@@ -2,7 +2,7 @@
 ### `lerobot/svla_so101_pickplace`
 
 Course: Data Science (UCAS), Assessed Task DS-A1.
-Author: `<FILL IN>`
+Author: Jin Xinhui
 
 ## What this is
 
@@ -114,8 +114,4 @@ not a moving branch, so the grader sees exactly what you intended to submit even
 keep working on the repo afterward.
 
 ## Submission summary (150–300 words, to paste into the platform)
-
-`<FILL IN — write this only after Section 14 of the notebook is complete. It should
-state: the dataset and pinned revision, the testable question, the single most
-important audit finding (recommend: the leakage gap number), the bias/measurement
-counterexample, and the one-sentence answer to the question.>`
+DS-A1 audits lerobot/svla_so101_pickplace (Apache-2.0), a real-world SO-100/SO-101 pick-and-place teleoperation dataset (50 episodes, 11,939 frames, 30 fps), frozen at Hugging Face commit f641879e22172be7e8161d5e6c1503c2d2feb657 with SHA-256 hashes recorded. The testable question: does a random frame-level train/test split give a trustworthy evaluation of an action-prediction baseline, or must splits be grouped by episode? Schema, range, missingness, duplicate, and length/timestamp-consistency checks found no missing values and no length or timestamp anomalies, but revealed 14.13% exact-duplicate frames, action values sitting exactly at -100 and +100 on two joints, and no success or reward label. The pinned snapshot declares LeRobot format v3.0, unlike the v2.1 layout the webpage suggested during planning, so the pinned info.json was treated as authoritative. With a k-NN state-to-action baseline, a frame-level split gave MSE 5.35 versus 18.53 under an episode-grouped split (3.46x; 2.6-3.5x across k=1,3,5), evidence of leakage through near-duplicate adjacent frames. Episode-start poses barely vary (four of six joints have std below 1), so the sample is a narrow single-task, single-setup convenience sample; operator count and environment variation are undisclosed. Prohibited claim: low held-out error on this data shows a policy will generalize to new objects or environments. Two full notebook runs reproduced identical key metrics (to 6 decimals) and file hashes. Notebook, PDF, Data Card, dictionary, hashes, and AI-use log are in the tagged repository.
