@@ -8,8 +8,7 @@
 ## 1. Dataset in one paragraph
 
 `lerobot/svla_so101_pickplace` is a real-world robot manipulation dataset collected with
-an SO-100/SO-101 "follower" robot arm performing a single task — "grasp a lego block and
-put it in the bin" — using the LeRobot recording pipeline. It contains 50 teleoperated
+an SO-100/SO-101 "follower" robot arm performing a single task — "pink lego brick into the transparent box" — using the LeRobot recording pipeline. It contains 50 teleoperated
 episodes (11,939 frames at 30 fps), each with a 6-dimensional commanded `action` and
 measured `observation.state` (joint positions), plus two synchronized camera streams
 (`up`, `side`). It has been used as a real-world evaluation benchmark in the SmolVLA

@@ -34,20 +34,68 @@ Section 2 for the full question definition.
 └── README.md
 ```
 
+## Dataset version (already frozen)
+
+This audit is frozen at a specific Hugging Face commit — running the notebook does
+**not** pick a new version, it re-downloads exactly this one:
+
+- **Source**: https://huggingface.co/datasets/lerobot/svla_so101_pickplace
+- **Pinned commit SHA**: `f641879e22172be7e8161d5e6c1503c2d2feb657`
+- **License**: Apache License 2.0 (`apache-2.0`)
+- **Format at this revision**: LeRobot `codebase_version = v3.0`
+
+`PINNED_REVISION` in notebook Section 4 is hardcoded to this SHA already; you do not
+need to run anything first or fill in a value.
+
 ## How to run
 
 ```bash
 python -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt --break-system-packages   # or without the flag in a venv
+pip install -r requirements.txt
 jupyter notebook notebook/DS_A1_provenance_audit.ipynb
 ```
 
-Run every cell in order, top to bottom, on a clean kernel. The first code cell fixes
-the random seed (42) and writes `environment_freeze.txt`. Section 4 resolves and prints
-the dataset's exact commit SHA on first run — copy that value into
-`data_card/SOURCE_LICENSE_HASH.md` and into the `PINNED_REVISION` variable so every
-later run uses the frozen version.
+Run every cell top to bottom on a clean kernel (`Kernel → Restart & Run All`). Section 4
+downloads the pinned revision above; no version-selection step is needed. Note this
+notebook has a strict top-to-bottom variable dependency chain (e.g. Section 7 defines
+`action_arr`/`state_arr`/`JOINT_NAMES` used by later sections; Section 9 defines
+`df_sorted` used by Sections 10-12) — running cells out of order will raise `NameError`.
+
+## Reproducibility evidence
+
+Two complete clean runs (`Restart & Run All`) were performed on this repository's
+final version. Evidence of identical results is kept in the repo, not just asserted:
+
+- `report/key_metrics_run1.json` vs `report/key_metrics.json` — first-run and
+  current-run snapshots of every reported metric (duplicate rate, per-episode
+  duplicate-rate summary stats, leading-run stats, length/timestamp anomaly counts,
+  leakage MSEs at k=1/3/5, naive baseline MSE, episode-start coverage std), rounded to
+  6 decimal places. `diff` between the two files is empty (confirmed identical).
+- `data_card/file_hashes.csv` — SHA-256 hashes of the 5 files hashed by this audit
+  (all files under `meta/`: `info.json`, `tasks.parquet`, `stats.json`,
+  `episodes/chunk-000/file-000.parquet`; plus the first data shard,
+  `data/chunk-000/file-000.parquet`). These 5 hashes were unchanged across both runs
+  and were additionally recomputed independently on the command line with
+  `shasum -a 256`, outside the notebook, with matching results (see
+  `ai_use_log/AI_USE_LOG.md` for the full verification log).
+- Because both runs produced byte-identical output files, `git status` after the
+  second run showed no diff for either file — an independent confirmation via git
+  itself, in addition to the explicit `diff` check.
+
+## Failed runs and negative results
+
+Per the course's common requirement to retain failed runs and negative (as well as
+positive) findings:
+
+- **Failed runs / bugs found while debugging** are documented, with cause and fix, in
+  `ai_use_log/AI_USE_LOG.md` under "AI-authored code defects found and fixed" (9
+  entries, e.g. an `IsADirectoryError` from a wrong format assumption, a silent
+  `cumprod()` logic bug, a reproducibility-breaking `assert`).
+- **Negative audit results** (checks that found *no* problem) are reported as genuine
+  findings, not omitted: notebook Section 10 reports 50/50 episodes with matching
+  frame counts and 0/50 episodes with timestamp anomalies; Section 8 reports 0 missing
+  values across all columns.
 
 ## Exporting the PDF report
 
@@ -66,52 +114,6 @@ jupyter nbconvert --to html notebook/DS_A1_provenance_audit.ipynb \
   --output ../report/DS_A1_report.html
 ```
 
-## Suggested `.gitignore`
-
-```
-data_cache/
-.venv/
-.ipynb_checkpoints/
-__pycache__/
-```
-
-## Git workflow (commit-by-milestone, matching the plan agreed with the AI assistant)
-
-```bash
-git init
-git add README.md requirements.txt .gitignore
-git commit -m "init: repo scaffold + requirements"
-
-# after Section 4 (dataset frozen + hashed)
-git add notebook/ data_card/file_hashes.csv data_card/SOURCE_LICENSE_HASH.md
-git commit -m "data: freeze dataset revision + hashes"
-
-# after Sections 6-10 (schema/range/missingness/duplicate/anomaly)
-git add notebook/ report/*.png
-git commit -m "audit: schema, range, missingness, duplicate, anomaly checks"
-
-# after Sections 11-13 (leakage demo + bias counterexample)
-git add notebook/ report/*.png
-git commit -m "analysis: leakage demonstration + bias counterexample"
-
-# after filling in Data Card / dictionary / AI-use log with real numbers
-git add data_card/DATA_CARD.md data_card/DATA_DICTIONARY.csv ai_use_log/AI_USE_LOG.md
-git commit -m "docs: data card, data dictionary, AI-use log"
-
-# after exporting the PDF
-git add report/DS_A1_report.pdf
-git commit -m "report: export PDF"
-
-# final: tag the exact commit you are submitting
-git tag -a v1.0-submission -m "DS-A1 submission"
-git remote add origin <your-repo-url>
-git push origin main --tags
-```
-
-The platform submission should link the **tagged** commit
-(e.g. `https://github.com/<you>/ds-a1-lerobot-pickplace-audit/tree/v1.0-submission`),
-not a moving branch, so the grader sees exactly what you intended to submit even if you
-keep working on the repo afterward.
 
 ## Submission summary (150–300 words, to paste into the platform)
 DS-A1 audits lerobot/svla_so101_pickplace (Apache-2.0), a real-world SO-100/SO-101 pick-and-place teleoperation dataset (50 episodes, 11,939 frames, 30 fps), frozen at Hugging Face commit f641879e22172be7e8161d5e6c1503c2d2feb657 with SHA-256 hashes recorded. The testable question: does a random frame-level train/test split give a trustworthy evaluation of an action-prediction baseline, or must splits be grouped by episode? Schema, range, missingness, duplicate, and length/timestamp-consistency checks found no missing values and no length or timestamp anomalies, but revealed 14.13% exact-duplicate frames, action values sitting exactly at -100 and +100 on two joints, and no success or reward label. The pinned snapshot declares LeRobot format v3.0, unlike the v2.1 layout the webpage suggested during planning, so the pinned info.json was treated as authoritative. With a k-NN state-to-action baseline, a frame-level split gave MSE 5.35 versus 18.53 under an episode-grouped split (3.46x; 2.6-3.5x across k=1,3,5), evidence of leakage through near-duplicate adjacent frames. Episode-start poses barely vary (four of six joints have std below 1), so the sample is a narrow single-task, single-setup convenience sample; operator count and environment variation are undisclosed. Prohibited claim: low held-out error on this data shows a policy will generalize to new objects or environments. Two full notebook runs reproduced identical key metrics (to 6 decimals) and file hashes. Notebook, PDF, Data Card, dictionary, hashes, and AI-use log are in the tagged repository.
