@@ -1,0 +1,30 @@
+# Verification log, generated 2026-09-30 05:10 +08
+# Comparison: run before text edits (backup) vs final run; same machine and environment
+
+## diff key_metrics.json
+IDENTICAL
+
+## diff file_hashes.csv
+IDENTICAL
+
+## diff environment_freeze.txt
+IDENTICAL
+
+## Independent hash recomputation (shasum), compare against file_hashes.csv
+254909942a6cbfb4692a239e4d0aa5c68ec8eb16f81b6593985ea7f2bb2823e3  meta/info.json
+4ae86bed785e0f98914812e87736e216139a22b43cf2b990e68384d85168c3c8  meta/stats.json
+1040cdef3328ec4376587152647df8e725e80a04210c426f891719e691c88533  meta/tasks.parquet
+191998bffd2680c477a4000270cf943bc423ba5fb54ee8b8244b57db062c5209  meta/episodes/chunk-000/file-000.parquet
+579ad57e2454359fa9f2c0e83525991bd2e0305b7b2914d0b1181da3c6ad9949  data/chunk-000/file-000.parquet
+
+## Dataset card (README.md) vs meta/info.json: codebase_version
+27:    "codebase_version": "v2.1",
+2:    "codebase_version": "v3.0",
+
+## License declarations
+2:license: apache-2.0
+20:- **License:** apache-2.0
+no license field in meta/info.json
+
+## SHA-256 of dataset card (not in file_hashes.csv)
+74a5ac3cf6de11b315eb4d01b1ce0e6250782fa809183f76b56aaa3d26a63d76  data_cache/svla_so101_pickplace/README.md
